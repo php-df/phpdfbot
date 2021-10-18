@@ -98,7 +98,7 @@ class TelegramChatMessages implements CollectorInterface
                     try {
                         yield $this->madeline->messages->forwardMessages([
                             'id' => $messagesIds,
-                            'to_peer' => '@phperson',
+                            'to_peer' => '@devalho',
                             'from_peer' => 'channel#' . $groupedId,
                         ]);
 
