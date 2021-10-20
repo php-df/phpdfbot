@@ -13,10 +13,10 @@ use Illuminate\Support\Str;
 class Contains implements Rule
 {
     /** @var array */
-    private $words;
+    private $words = [];
 
     /** @var array */
-    private $foundWords;
+    private $foundWords = [];
 
     /**
      * Create a new rule instance.
