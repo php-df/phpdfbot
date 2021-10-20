@@ -142,6 +142,7 @@ class TelegramChatMessages implements CollectorInterface
             '@vagasticbr',
             '-1481274775', //-1001481274775
             '-444960845',
+//            '-1150558288',
             '@ITJOBS_EMPREGOSTI',
             '@vagas_consultoria_TI',
             '@developersjobs',
@@ -150,6 +151,7 @@ class TelegramChatMessages implements CollectorInterface
             '@VagasTiCafe',
             '@VagasSegInfo',
             '@AgileVagas',
+            '@busqueomelhor',
         ];
 
         $messages = $this->madeline->loop(function () use ($madeline, $groups) {
@@ -160,7 +162,9 @@ class TelegramChatMessages implements CollectorInterface
             $offsetDate = Carbon::now()->modify('-12 hours')->getTimestamp();
             foreach ($groups as $group) {
                 try {
-                    $madeline->channels->joinChannel(['channel' => $group]);
+                    if (strpos($group, '@') === 0) {
+                        $madeline->channels->joinChannel(['channel' => $group]);
+                    }
                     $result = yield $madeline->messages->getHistory([
                         'peer' => $group,
                         'offset_id' => 0,
